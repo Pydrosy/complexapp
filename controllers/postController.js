@@ -1,5 +1,5 @@
-const e = require('connect-flash');
 const Post = require('../models/Post')
+
 
 exports.viewCreateScreen = function(req, res) {
   res.render('create-post');
@@ -8,6 +8,7 @@ exports.viewCreateScreen = function(req, res) {
 exports.create = function(req, res) {
 let post = new Post(req.body, req.session.user._id)
 post.create().then(function(newId){
+   
    req.flash("success", "New post successfully created.")
    req.session.save(()=>{
        res.redirect(`/post/${newId}`)

@@ -177,7 +177,9 @@ User.prototype.register = function(){
         //save user data into a database
        await usersCollection.insertOne(this.data);
          this.getAvatar();
-resolve();
+            resolve(
+                
+            );
     }
     else {
         reject(this.errors);
